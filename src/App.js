@@ -1,25 +1,31 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import Pokemons from "./Components/Pokemons/Pokemons";
+import Pokemons2 from "./Components/Pokemons2/Pokemons2";
+import RickAndMorty from "./Components/RickAndMorty/RickAndMorty";
+import AddProduct from "./Components/AddProduct/AddProduct";
+import Users from "./Components/Users/Users";
+import Header from "./Components/Header/Header";
+import "./app.css";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    // указываем что роутинг будет в браузере
+    <BrowserRouter>
+      {/* header будет на всех наших страницах  */}
+      <Header />
+      <Routes>
+        {/* непосредственно сами роутеры */}
+        <Route path="/" element={<h1>Homepage</h1>} />
+        <Route path="/Pokemons" element={<Pokemons />} />
+        <Route path="/pokemons-2" element={<Pokemons2 />} />
+        <Route path="/rick" element={<RickAndMorty />} />
+        <Route path="/add" element={<AddProduct />} />
+      </Routes>
+      {/* footer будет на всех страницах */}
+      <h1>footer</h1>
+    </BrowserRouter>
   );
-}
+};
 
 export default App;
